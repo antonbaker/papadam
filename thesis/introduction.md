@@ -1,6 +1,6 @@
 # Introduction 
 
-[This text](https://github.com/antonbaker/papadam/blob/master/thesis/introduction.md)
+[This text](https://github.com/antonbaker/papadam)
 
 ## Section 1
 
