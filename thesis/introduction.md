@@ -4,39 +4,15 @@
 
 ## Section 1
 
-blabla This is a sentence.  blabla This is half a
-sentence.  blabla This is a quarter sentence.  blabla
-
-blabla This is a sentence.blabla This is a quarter
-sentence.  blabla This is a sentence.blabla This is a
-quarter sentence.  blabla This is a sentence.blabla This
-iw asdfasdfasdfasdfsdff ss a quarter sentence.  blabla
-This is a sentence.blabla This is a quarter sentence.
-blabla This is a sentence.blabla This is a quarter
-sentence.  blabla This is a sentence.blabla This is a
-quarter sentence.  blabla This is a sentence.blabla This
-is a quarter sentence.  blabla This is a sentence.blabla
-This is a quarter sentence.  blabla This is a
-sentence.blabla This is a quarter sentence.  blabla This
-is a sentence.blabla This is a quarter sentence.  blabla
-This is a sentence.blabla This is a quarter sentence.
-blabla This is a sentence.blabla This is a quarter
-sentence.  blabla This is a sentence.
-
-Rochusstr 61 52062 Aachen
-Anton Rochusstr 61 52062 Aachen
-
 This is a numbered list:
 1. Bla
 1. Bla
 1. Bla
-1. Bla
-1. Bla
-1. Bla
-1. Bla
-1. Bla
-1. Bla
 
+This is a bulleted list:
+* Bla
+* Bla
+* Bla
 
 ```
 def apply_rules_to_datalines(rules=None, datalines=None):
@@ -66,4 +42,5 @@ def apply_rules_to_datalines(rules=None, datalines=None):
 
     return dict(f2lines_dict)
 ```
-Adding a line here.
+
+Adding a line at the end.
