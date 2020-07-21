@@ -8,14 +8,57 @@ from fatigue_main import main_function
 #   processed_cyclic100.csv sind hysterese daten für jeden zyklus mit angepasster Sensitivät
 
 # Path where the rawdata of the specimen is going to be 
-# MainPath        = r"\\sisyphos\AG-CeliK-Studenten\Timur\05 Datenbank\gesamter Datensatz\2\3_217_0_30Hz_850N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\10_265_90_1Hz_560N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\11_267_90_5Hz_560N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\12_268_90_5Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\1_256_90_5Hz_510N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\4_262_90_5Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\5_258_90_5Hz_605N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\7_259_90_5Hz_560N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\8_264_90_5Hz_610N_Valid"
 MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\9_260_90_5Hz_560N_Valid"
-# MainPath        = r"C:\Users\timur\Desktop\IKV\PBTGF30_120_0°_2Hz_925N_Valid_Backup"
-# MainPath        = r"C:\Users\timur\Desktop\IKV\PBTGF30_120_0°_2Hz_925N_Valid_3MB"
-MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\9_260_90_5Hz_560N_Valid"
-MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\9_260_90_5Hz_560N_Valid"
-# MainPath        = r"C:\Users\Celik\Desktop\Energiebasierte_Schadensakkumulation\Validierung\PostProcessingSkript_2020_01_20\81_57_L1_1Hz_610N_Valid"
-# MainPath        = r"C:\Users\Celik\Desktop\Postprocessing_Unit_check\PBTGF30_120_0°_2Hz_925N_Valid_Backup"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\13_269_90_5Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\14_275_90_2Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\15_283_90_2Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\18_276_90_2Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\19_291_90_2Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\23_296_90_2Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\24_307_90_2Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\25_317_90_2Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\26_277_90_5Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\27_286_90_5Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\28_289_90_5Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\29_290_90_5Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\31_316_90_5Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\32_295_90_5Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\33_297_90_5Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\34_312_90_5Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\35_278_90_15Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\36_279_90_15Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\37_280_90_15Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\38_271_90_15Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\39_281_90_15Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\40_282_90_15Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\42_287_90_15Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\43_273_90_15Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\46_313_90_15Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\47_315_90_15Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\48_292_90_2Hz_555N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\49_285_90_2Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\50_300_90_2Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\51_314_90_15Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\53_308_90_2Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\56_302_90_5Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\57_303_90_15Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\59_305_90_2Hz_610N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\60_311_90_15Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\61_310_90_2Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\66_322_90_2Hz_460N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\67_323_90_2Hz_500N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\69_326_90_15Hz_490N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\72_329_90_2Hz_590N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\73_330_90_15Hz_590N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\74_333_90_15Hz_490N_Valid"
 
 # Path where all the data is being saved
 SavePath = MainPath + r"\Results\\"
@@ -53,7 +96,6 @@ usedSensor      = "1369"
 #Cross-section of the specimen
 area            = 10            # [mm^2] Cross-section of the specimen. 10 mm^2 = 1BA Specimen according to DIN ISO 527       
 
-
 #downsampling
 #   This parameter controls the downsampling to reduce the resulting data
 #   entered 200 means all the data is reduced to arround 200 considered cycle
@@ -64,11 +106,8 @@ cycle_downsampling = 1
 #decimal_separator for exported csv's
 decimal_separator = ","
 
-
 #
 autoShift       = False
 autoManualShift = 0 
-
-
 
 main_function(MainPath,SavePath,year,month,day,hour,minute,second,mikrosecond,offsetIR,offsetUSB,usedSensor,usedSensorplug,area,cycle_downsampling,decimal_separator,autoShift)
