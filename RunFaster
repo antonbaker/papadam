@@ -1,0 +1,74 @@
+from fatigue_main import main_function
+#   mit MainPath geht ihr in den Ordner wo die Messdatei drin ist, die ihr untersuchen wollt. sollte nur eine drin sein  
+#   usb und infrarot daten sind optional, zur zeit nicht ganz synchron, aber nicht sehr verschoben
+#   die berechneten Daten kommen in den Ordner in dem das Skript ausgeführt wird
+#   der export erfolgt in USA-standard, das heißt Dezimaltrennzeichen ist . und nicht ,
+#   corrected_zwick.csv sind die Messdaten mit angepasster Sensitivät
+#   processed_cyclic.csv sind die zyklischen Messdaten mit angepasster Sensitivät mit den Temperaturen, aber nicht wirklich synchron
+#   processed_cyclic100.csv sind hysterese daten für jeden zyklus mit angepasster Sensitivät
+
+# Path where the rawdata of the specimen is going to be 
+# MainPath        = r"\\sisyphos\AG-CeliK-Studenten\Timur\05 Datenbank\gesamter Datensatz\2\3_217_0_30Hz_850N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\9_260_90_5Hz_560N_Valid"
+# MainPath        = r"C:\Users\timur\Desktop\IKV\PBTGF30_120_0°_2Hz_925N_Valid_Backup"
+# MainPath        = r"C:\Users\timur\Desktop\IKV\PBTGF30_120_0°_2Hz_925N_Valid_3MB"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\9_260_90_5Hz_560N_Valid"
+MainPath        = r"\\sisyphos\AG-Celik-Studenten\StuWi_BA_Baker\04_Experimente\90_Degree_FibreOriention\9_260_90_5Hz_560N_Valid"
+# MainPath        = r"C:\Users\Celik\Desktop\Energiebasierte_Schadensakkumulation\Validierung\PostProcessingSkript_2020_01_20\81_57_L1_1Hz_610N_Valid"
+# MainPath        = r"C:\Users\Celik\Desktop\Postprocessing_Unit_check\PBTGF30_120_0°_2Hz_925N_Valid_Backup"
+
+# Path where all the data is being saved
+SavePath = MainPath + r"\Results\\"
+
+#manual time of excel if no Zeit.txt is given
+year            = 2019
+month           = 11
+day             = 14
+hour            = 10
+minute          = 55
+second          = 0
+mikrosecond     = 0
+
+#manual offset for IR and USB
+offsetIR        = 0
+offsetUSB       = 0
+
+# Sensor
+#   Sensor Identification number
+#   This script has a function to correct all strain data measured with the clip-on extensometer,
+#   The plug we use for the VHF7 Testing machine is made for the sensor with the ID: 1369 
+#   
+#   Important! Just change the usedSensor according the used sensor during the test
+#
+#   The sensor ID is on each clip-on extensometer 
+#   Comment date: 2020-March-26, by Hakan Celik
+#
+#1369 ist der Plug den wir die ganze Zeit verwenden
+#2181 der lange Sensor (für PA?)
+#1880 der kurze (für PBT?)
+#wenn 2181 auf 18mm gestaucht wurde dann trotzdem 2181 eingeben, das Programm berechnet das automatisch
+usedSensorplug  = "1369"
+usedSensor      = "1369"
+
+#Cross-section of the specimen
+area            = 10            # [mm^2] Cross-section of the specimen. 10 mm^2 = 1BA Specimen according to DIN ISO 527       
+
+
+#downsampling
+#   This parameter controls the downsampling to reduce the resulting data
+#   entered 200 means all the data is reduced to arround 200 considered cycle
+#   If the number of requested data cycles higher than the original data, 
+#   all measured cycles will be considered in the resulting data
+cycle_downsampling = 1
+
+#decimal_separator for exported csv's
+decimal_separator = ","
+
+
+#
+autoShift       = False
+autoManualShift = 0 
+
+
+
+main_function(MainPath,SavePath,year,month,day,hour,minute,second,mikrosecond,offsetIR,offsetUSB,usedSensor,usedSensorplug,area,cycle_downsampling,decimal_separator,autoShift)
