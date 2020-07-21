@@ -1,0 +1,292 @@
+{
+    "databaseHost": "playground.ikv.rwth-aachen.de",
+    "databaseDatabase": "MATDB",
+    "databaseUsername": "fatiguesft",
+    "databasePassword": "fatigueikv",
+    "databaseTables": {
+        "mech_measurement": {
+            "columns": {
+                "UID": {
+                    "variableType": "int",
+                    "unit": ""
+                },
+                "Time": {
+                    "variableType": "varchar(255)",
+                    "unit": ""
+                },
+                "Normalized_Actuating_Value": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Actuating_Value": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Cycle_Number": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Cycle": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Displacement": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Piston_Position": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Displacement_in_percent": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Force": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Absolute_Force": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Frequency": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Load_reference": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Strain_reference": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Displacement_reference": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Clip-On Displacement": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Absolute Clip-On Displacement": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Specimen strain": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Stress_Zwick": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Velocity": {
+                    "variableType": "float",
+                    "unit": ""
+                }
+            },
+            "originalName": {
+                "Normierter Stellwert": "Normalized_Actuating_Value [mm/s]",
+                "Stellwert [A]": "Actuating_Value [A]",
+                "Zyklusnummer": "Cycle_Number [-]",
+                "Zyklus": "Cycle [-]",
+                "Weg": "Displacement [mm]",
+                "Kolbenposition": "Piston_Position [mm]",
+                "Weg in %": "Displacement_in_percent [%]",
+                "Kraft": "Force [N]",
+                "Kraft absolut": "Absolute_Force [N]",
+                "Frequenz": "Frequency [Hz]",
+                "Sollwert Kraft": "Load_reference [kN]",
+                "Sollwert Dehnung": "Strain_reference [mm]",
+                "Sollwert Weg": "Displacement_reference [mm]",
+                "Dehnung": "Clip-On Displacement [mm]",
+                "Dehnung absolut": "Absolute Clip-On Displacement [mm]",
+                "Dehnung in %": "Specimen strain [%]",
+                "Spannung": "Stress_Zwick [N/mm^2]",
+                "Temperatur": "Temperature [°C]",
+                "Pr\u00fcfzeit": "Time [s]",
+                "Geschwindigkeit": "Velocity [mm/s]"
+            }
+        },
+        "mech_infrared": {
+            "columns": {
+                "UID": {
+                    "variableType": "int",
+                    "unit": ""
+                },
+                "Time": {
+                    "variableType": "varchar(255)",
+                    "unit": ""
+                },
+                "Surfacetemp_of_Specimen": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Temp_IR": {
+                    "variableType": "float",
+                    "unit": ""
+                }
+            },
+            "originalName": {
+                "TProc": "Surfacetemp_of_Specimen",
+                "TInt": "Temp_IR_intern_chamber"
+            }
+        },
+        "mech_usb": {
+            "columns": {
+                "UID": {
+                    "variableType": "int",
+                    "unit": ""
+                },
+                "Time": {
+                    "variableType": "varchar(255)",
+                    "unit": ""
+                },
+                "Temperature_Chamber": {
+                    "variableType": "float",
+                    "unit": ""
+                },
+                "Humidity_Chamber": {
+                    "variableType": "float",
+                    "unit": ""
+                }
+            },
+            "originalName": {
+                "Celsius(\u00b0C)": "Temperature_Chamber",
+                "Humidity(%rh)": "Humidity_Chamber"
+            }
+        },
+        "mech_cyclic": {
+            "columns": {
+                "UID": {
+                    "variableType": "int",
+                    "unit": "-"
+                },
+                "Cycle_number [-]": {
+                    "variableType": "float",
+                    "unit": "-"
+                },
+                "Time [s]": {
+                    "variableType": "varchar(255)",
+                    "unit": "s"
+                },
+                "Surfacetemp_of_Specimen [\u00b0C]": {
+                    "variableType": "float",
+                    "unit": "°C"
+                },
+                "Temp_IR_intern_chamber [\u00b0C]": {
+                    "variableType": "float",
+                    "unit": "°C"
+                },
+                "Temperature_Chamber_USB [\u00b0C]": {
+                    "variableType": "float",
+                    "unit": "°C"
+                },
+                "Humidity_Chamber [%rh]": {
+                    "variableType": "float",
+                    "unit": "%rh"
+                },
+                "Stress_Max [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "N/mm^2"
+                },
+                "Stress_Min [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "N/mm^2"
+                },
+                "Stress_Mean [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "N/mm^2"
+                },
+                "Strain_Max [%]": {
+                    "variableType": "float",
+                    "unit": "%"
+                },
+                "Strain_Min [%]": {
+                    "variableType": "float",
+                    "unit": "%"
+                },
+                "Strain_Mean [%]": {
+                    "variableType": "float",
+                    "unit": "%"
+                },
+                "E_Dyn [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "N/mm^2"
+                },
+                "Dissipated_Energy [kJ/m^3]": {
+                    "variableType": "float",
+                    "unit": "kJ/mm^3"
+                },
+                "Stored_Energy [kJ/m^3]": {
+                    "variableType": "float",
+                    "unit": "kJ/mm^3"
+                },
+                "Cumulated_Dissipated_Energy [kJ/m^3]": {
+                    "variableType": "float",
+                    "unit": "kJ/mm^3"
+                },
+                "Cumulated_Stored_Energy [kJ/m^3]": {
+                    "variableType": "float",
+                    "unit": "kJ/mm^3"
+                },
+                "tan_DELTA [-]": {
+                    "variableType": "float",
+                    "unit": "s"
+                },
+                "Damage D [-]": {
+                    "variableType": "float",
+                    "unit": "s"
+                },
+                "Strain_rate [%]": {
+                    "variableType": "float",
+                    "unit": "s"
+                },
+                "Storage_Modulus [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "s"
+                },
+                "Loss_Modulus [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "s"
+                },
+                "d(E_Dyn)/dN [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "s"
+                },
+                "Damping [-]": {
+                    "variableType": "float",
+                    "unit": "s"
+                }
+            },
+            "originalName": ""
+        },
+        "mech_cyclic100": {
+            "columns": {
+                "UID": {
+                    "variableType": "int",
+                    "unit": "-"
+                },
+                "Cycle_number [-]": {
+                    "variableType": "float",
+                    "unit": "-"
+                },
+                "Time [s]": {
+                    "variableType": "varchar(255)",
+                    "unit": "s"
+                },
+                "Stress [N/mm^2]": {
+                    "variableType": "float",
+                    "unit": "N/mm^2"
+                },
+                "Strain [%]": {
+                    "variableType": "float",
+                    "unit": "%"
+                }
+            },
+            "originalName": ""
+        }
+    }
+}
