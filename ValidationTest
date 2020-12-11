@@ -1,0 +1,521 @@
+#3 damage accumulation
+
+import math
+import sympy
+from sympy import symbols, solve
+
+#Maximal Strain
+
+a_emax0 = 0.003249
+b_emax0 = -1.029
+a_emax90 = 0.00479
+b_emax90 = -0.4919
+
+#Maximal Time
+
+a_tmax_2Hz0 = 1606
+b_tmax_2Hz0 = -0.5309
+c_tmax_2Hz0 = -33.01
+a_tmax_2Hz90 = -337
+b_tmax_2Hz90 = 0.372
+c_tmax_2Hz90 = 1077
+
+a_tmax_5Hz0 = 1452
+b_tmax_5Hz0 = -0.4262
+c_tmax_5Hz0 = -90.48
+a_tmax_5Hz90 = -47.51
+b_tmax_5Hz90 = 1.062
+c_tmax_5Hz90 = 724.9
+
+a_tmax_15Hz0 = 1368
+b_tmax_15Hz0 = -0.2823
+c_tmax_15Hz0 = -228.4
+a_tmax_15Hz90 = -91.41
+b_tmax_15Hz90 = 0.7337
+c_tmax_15Hz90 = 754.4
+
+# Dynamic Strain
+
+# a_edyn
+
+a_a_edyn0 = 9.129e-5
+b_a_edyn0 = 1.414
+c_a_edyn0 = -0.07084
+a_a_edyn90 = 3.702e-4
+b_a_edyn90 = 1.328
+c_a_edyn90 = -0.2227
+
+# b_edyn
+
+a_b_edyn0 = 1.575e-17
+b_b_edyn0 = 5.297
+c_b_edyn0 = 0
+a_b_edyn90 = 3.174e-21
+b_b_edyn90 = 6.939
+c_b_edyn90 = 0
+
+# c_edyn
+
+a_c_edyn0 = 0.001636
+b_c_edyn0 = 0.8649
+c_c_edyn0 = -0.4132
+a_c_edyn90 = -3.607e12
+b_c_edyn90 = -5.143
+c_c_edyn90 = 0.1114
+
+# d_edyn
+
+a_d_edyn0 = 7.848e-12
+b_d_edyn0 = 4.001
+c_d_edyn0 = -0.6313
+a_d_edyn90 = 2.342e-14
+b_d_edyn90 = 5.073
+c_d_edyn90 = 0.3735
+
+# Minimal Strain
+
+# a_emin
+
+stressmin = 2
+E0 = 8180.34
+cor_emin0 = 0.035
+E90 = 4582.92
+cor_emin90 = 0.087
+
+#b_emin
+
+a_b_emin0 = 8.404e8
+b_b_emin0 = -2.693
+c_b_emin0 = -3.068
+a_b_emin90 = 7.434e13
+b_b_emin90 = -5.16
+c_b_emin90 = 4.304
+
+#lists
+
+orientationlist1 = [0, 0, 0, 0]
+orientationlist2 = [0, 0, 0, 0]
+orientationlist3 = [0, 0, 0, 0]
+orientationlist4 = [0, 0, 0, 0]
+orientationlist5 = [0, 0, 0, 0]
+orientationlist6 = [0, 0, 0, 0]
+orientationlist7 = [0, 0, 0, 0]
+orientationlist8 = [0, 0, 0, 0]
+orientationlist9 = [0, 0, 0, 0]
+orientationlist10 = [0, 0, 0, 0]
+orientationlist11 = [0, 0, 0, 0]
+orientationlist12 = [0, 0, 0, 0]
+orientationlist13 = [0, 0, 0, 0]
+orientationlist14 = [0, 0, 0, 0]
+orientationlist15 = [0, 0, 0, 0]
+orientationlist16 = [0, 0, 0, 0]
+orientationlist17 = [0, 0, 0, 0]
+orientationlist18 = [0, 0, 0, 0]
+orientationlist19 = [0, 0, 0, 0]
+orientationlist20 = [0, 0, 0, 0]
+orientationlist21 = [0, 0, 0, 0]
+orientationlist22 = [0, 0, 0, 0]
+orientationlist23 = [0, 0, 0, 0]
+orientationlist24 = [0, 0, 0, 0]
+orientationlist25 = [0, 0, 0, 0]
+orientationlist26 = [90, 90, 90, 90]
+orientationlist27 = [90, 90, 90, 90]
+orientationlist28 = [90, 90, 90, 90]
+orientationlist29 = [90, 90, 90, 90]
+orientationlist30 = [90, 90, 90, 90]
+orientationlist31 = [90, 90, 90, 90]
+orientationlist32 = [90, 90, 90, 90]
+orientationlist33 = [90, 90, 90, 90]
+orientationlist34 = [90, 90, 90, 90]
+orientationlist35 = [90, 90, 90, 90]
+orientationlist36 = [90, 90, 90, 90]
+orientationlist37 = [90, 90, 90, 90]
+orientationlist38 = [90, 90, 90, 90]
+orientationlist39 = [90, 90, 90, 90]
+orientationlist40 = [90, 90, 90, 90]
+orientationlist41 = [90, 90, 90, 90]
+orientationlist42 = [90, 90, 90, 90]
+orientationlist43 = [90, 90, 90, 90]
+orientationlist44 = [90, 90, 90, 90]
+orientationlist45 = [90, 90, 90, 90]
+orientationlist46 = [90, 90, 90, 90]
+orientationlist47 = [90, 90, 90, 90]
+orientationlist48 = [90, 90, 90, 90]
+orientationlist49 = [90, 90, 90, 90]
+orientationlist50 = [90, 90, 90, 90]
+
+frequencylist1 = [5, 5, 5, 5]
+frequencylist2 = [5, 5, 5, 5]
+frequencylist3 = [5, 5, 5, 5]
+frequencylist4 = [5, 5, 5, 5]
+frequencylist5 = [5, 5, 5, 5]
+frequencylist6 = [5, 5, 5, 5]
+frequencylist7 = [5, 5, 5, 5]
+frequencylist8 = [15, 5, 2, 5]
+frequencylist9 = [15, 5, 2, 5]
+frequencylist10 = [15, 5, 2, 5]
+frequencylist11 = [2, 5, 15, 5]
+frequencylist12 = [2, 5, 15, 5]
+frequencylist13 = [2, 5, 15, 5]
+frequencylist14 = [15, 5, 2, 5]
+frequencylist15 = [15, 5, 2, 5]
+frequencylist16 = [15, 5, 2, 5]
+frequencylist17 = [2, 5, 15, 5]
+frequencylist18 = [2, 5, 15, 5]
+frequencylist19 = [2, 5, 15, 5]
+frequencylist20 = [2, 5, 15, 5]
+frequencylist21 = [2, 5, 15, 5]
+frequencylist22 = [2, 5, 15, 5]
+frequencylist23 = [15, 5, 2, 5]
+frequencylist24 = [15, 5, 2, 5]
+frequencylist25 = [15, 5, 2, 5]
+frequencylist26 = [5, 5, 5, 5]
+frequencylist27 = [5, 5, 5, 5]
+frequencylist28 = [5, 5, 5, 5]
+frequencylist29 = [5, 5, 5, 5]
+frequencylist30 = [5, 5, 5, 5]
+frequencylist31 = [5, 5, 5, 5]
+frequencylist32 = [15, 5, 2, 5]
+frequencylist33 = [15, 5, 2, 5]
+frequencylist34 = [15, 5, 2, 5]
+frequencylist35 = [2, 5, 15, 5]
+frequencylist36 = [2, 5, 15, 5]
+frequencylist37 = [2, 5, 15, 5]
+frequencylist38 = [15, 5, 2, 5]
+frequencylist39 = [15, 5, 2, 5]
+frequencylist40 = [15, 5, 2, 5]
+frequencylist41 = [15, 5, 2, 5]
+frequencylist42 = [2, 5, 15, 5]
+frequencylist43 = [2, 5, 15, 5]
+frequencylist44 = [2, 5, 15, 5]
+frequencylist45 = [2, 5, 15, 5]
+frequencylist46 = [2, 5, 15, 5]
+frequencylist47 = [2, 5, 15, 5]
+frequencylist48 = [15, 5, 2, 5]
+frequencylist49 = [15, 5, 2, 5]
+frequencylist50 = [15, 5, 2, 5]
+
+forcelist1 = [850, 760, 670, 760]
+forcelist2 = [850, 760, 670, 760]
+forcelist3 = [850, 760, 670, 760]
+forcelist4 = [670, 760, 850, 760]
+forcelist5 = [670, 760, 850, 760]
+forcelist6 = [670, 760, 850, 760]
+forcelist7 = [670, 760, 850, 760]
+forcelist8 = [760, 760, 760, 760]
+forcelist9 = [760, 760, 760, 760]
+forcelist10 = [760, 760, 760, 760]
+forcelist11 = [760, 760, 760, 760]
+forcelist12 = [760, 760, 760, 760]
+forcelist13 = [760, 760, 760, 760]
+forcelist14 = [850, 760, 670, 760]
+forcelist15 = [850, 760, 670, 760]
+forcelist16 = [850, 760, 670, 760]
+forcelist17 = [670, 760, 850, 760]
+forcelist18 = [670, 760, 850, 760]
+forcelist19 = [670, 760, 850, 760]
+forcelist20 = [850, 760, 670, 760]
+forcelist21 = [850, 760, 670, 760]
+forcelist22 = [850, 760, 670, 760]
+forcelist23 = [670, 760, 850, 760]
+forcelist24 = [670, 760, 850, 760]
+forcelist25 = [670, 760, 850, 760]
+forcelist26 = [590, 540, 490, 540]
+forcelist27 = [590, 540, 490, 540]
+forcelist28 = [590, 540, 490, 540]
+forcelist29 = [490, 540, 590, 540]
+forcelist30 = [490, 540, 590, 540]
+forcelist31 = [490, 540, 590, 540]
+forcelist32 = [540, 540, 540, 540]
+forcelist33 = [540, 540, 540, 540]
+forcelist34 = [540, 540, 540, 540]
+forcelist35 = [540, 540, 540, 540]
+forcelist36 = [540, 540, 540, 540]
+forcelist37 = [540, 540, 540, 540]
+forcelist38 = [590, 540, 490, 540]
+forcelist39 = [590, 540, 490, 540]
+forcelist40 = [590, 540, 490, 540]
+forcelist41 = [590, 540, 490, 540]
+forcelist42 = [490, 540, 590, 540]
+forcelist43 = [490, 540, 590, 540]
+forcelist44 = [490, 540, 590, 540]
+forcelist45 = [590, 540, 490, 540]
+forcelist46 = [590, 540, 490, 540]
+forcelist47 = [590, 540, 490, 540]
+forcelist48 = [490, 540, 590, 540]
+forcelist49 = [490, 540, 590, 540]
+forcelist50 = [490, 540, 590, 540]
+
+cycleslist1 = [593, 3213, 36366, 7084]
+cycleslist2 = [593, 3213, 36366, 7908]
+cycleslist3 = [593, 3213, 36366, 8052]
+cycleslist4 = [36366, 3213, 480, 0]
+cycleslist5 = [36366, 3213, 593, 4338]
+cycleslist6 = [36366, 3213, 593, 725]
+cycleslist7 = [36366, 3213, 593, 3183]
+cycleslist8 = [4355, 3213, 2401, 7198]
+cycleslist9 = [4355, 3213, 2401, 4907]
+cycleslist10 = [4355, 3213, 2401, 4747]
+cycleslist11 = [2401, 3213, 4355, 8174]
+cycleslist12 = [2401, 3213, 4355, 6027]
+cycleslist13 = [2401, 3213, 4355, 5265]
+cycleslist14 = [638, 3213, 21949, 4076]
+cycleslist15 = [638, 3213, 21949, 6792]
+cycleslist16 = [638, 3213, 21949, 3915]
+cycleslist17 = [21949, 3213, 638, 4600]
+cycleslist18 = [21949, 3213, 638, 3243]
+cycleslist19 = [21949, 3213, 638, 2652]
+cycleslist20 = [488, 3213, 85331, 7369]
+cycleslist21 = [488, 3213, 85331, 2494]
+cycleslist22 = [488, 3213, 85331, 2315]
+cycleslist23 = [85331, 3213, 488, 245]
+cycleslist24 = [85331, 3213, 387, 0]
+cycleslist25 = [85331, 3213, 447, 0]
+cycleslist26 = [519, 4136, 31168, 7570]
+cycleslist27 = [519, 4136, 31168, 12889]
+cycleslist28 = [519, 4136, 31168, 13086]
+cycleslist29 = [31168, 4136, 519, 3135]
+cycleslist30 = [31168, 4136, 519, 7194]
+cycleslist31 = [31168, 4136, 519, 2687]
+cycleslist32 = [5738, 4136, 1425, 14284]
+cycleslist33 = [5738, 4136, 1425, 6725]
+cycleslist34 = [5738, 4136, 1425, 13503]
+cycleslist35 = [1425, 4136, 5738, 16720]
+cycleslist36 = [1425, 4136, 5738, 6341]
+cycleslist37 = [1425, 4136, 5738, 4944]
+cycleslist38 = [603, 4136, 11948, 23346]
+cycleslist39 = [603, 4136, 11948, 18892]
+cycleslist40 = [603, 4136, 11948, 11753]
+cycleslist41 = [603, 4136, 11948, 22480]
+cycleslist42 = [11948, 4136, 603, 13176]
+cycleslist43 = [11948, 4136, 603, 14875]
+cycleslist44 = [11948, 4136, 603, 12487]
+cycleslist45 = [212, 4136, 54389, 19134]
+cycleslist46 = [212, 4136, 54389, 6411]
+cycleslist47 = [212, 4136, 54389, 13666]
+cycleslist48 = [54389, 4136, 212, 4737]
+cycleslist49 = [54389, 4136, 212, 13919]
+cycleslist50 = [54389, 4136, 212, 5919]
+
+experiment1 = [orientationlist1, frequencylist1, forcelist1, cycleslist1]
+experiment2 = [orientationlist2, frequencylist2, forcelist2, cycleslist2]
+experiment3 = [orientationlist3, frequencylist3, forcelist3, cycleslist3]
+experiment4 = [orientationlist4, frequencylist4, forcelist4, cycleslist4]
+experiment5 = [orientationlist5, frequencylist5, forcelist5, cycleslist5]
+experiment6 = [orientationlist6, frequencylist6, forcelist6, cycleslist6]
+experiment7 = [orientationlist7, frequencylist7, forcelist7, cycleslist7]
+experiment8 = [orientationlist8, frequencylist8, forcelist8, cycleslist8]
+experiment9 = [orientationlist9, frequencylist9, forcelist9, cycleslist9]
+experiment10 = [orientationlist10, frequencylist10, forcelist10, cycleslist10]
+experiment11 = [orientationlist11, frequencylist11, forcelist11, cycleslist11]
+experiment12 = [orientationlist12, frequencylist12, forcelist12, cycleslist12]
+experiment13 = [orientationlist13, frequencylist13, forcelist13, cycleslist13]
+experiment14 = [orientationlist14, frequencylist14, forcelist14, cycleslist14]
+experiment15 = [orientationlist15, frequencylist15, forcelist15, cycleslist15]
+experiment16 = [orientationlist16, frequencylist16, forcelist16, cycleslist16]
+experiment17 = [orientationlist17, frequencylist17, forcelist17, cycleslist17]
+experiment18 = [orientationlist18, frequencylist18, forcelist18, cycleslist18]
+experiment19 = [orientationlist19, frequencylist19, forcelist19, cycleslist19]
+experiment20 = [orientationlist20, frequencylist20, forcelist20, cycleslist20]
+experiment21 = [orientationlist21, frequencylist21, forcelist21, cycleslist21]
+experiment22 = [orientationlist22, frequencylist22, forcelist22, cycleslist22]
+experiment23 = [orientationlist23, frequencylist23, forcelist23, cycleslist23]
+experiment24 = [orientationlist24, frequencylist24, forcelist24, cycleslist24]
+experiment25 = [orientationlist25, frequencylist25, forcelist25, cycleslist25]
+experiment26 = [orientationlist26, frequencylist26, forcelist26, cycleslist26]
+experiment27 = [orientationlist27, frequencylist27, forcelist27, cycleslist27]
+experiment28 = [orientationlist28, frequencylist28, forcelist28, cycleslist28]
+experiment29 = [orientationlist29, frequencylist29, forcelist29, cycleslist29]
+experiment30 = [orientationlist30, frequencylist30, forcelist30, cycleslist30]
+experiment31 = [orientationlist31, frequencylist31, forcelist31, cycleslist31]
+experiment32 = [orientationlist32, frequencylist32, forcelist32, cycleslist32]
+experiment33 = [orientationlist33, frequencylist33, forcelist33, cycleslist33]
+experiment34 = [orientationlist34, frequencylist34, forcelist34, cycleslist34]
+experiment35 = [orientationlist35, frequencylist35, forcelist35, cycleslist35]
+experiment36 = [orientationlist36, frequencylist36, forcelist36, cycleslist36]
+experiment37 = [orientationlist37, frequencylist37, forcelist37, cycleslist37]
+experiment38 = [orientationlist38, frequencylist38, forcelist38, cycleslist38]
+experiment39 = [orientationlist39, frequencylist39, forcelist39, cycleslist39]
+experiment40 = [orientationlist40, frequencylist40, forcelist40, cycleslist40]
+experiment41 = [orientationlist41, frequencylist41, forcelist41, cycleslist41]
+experiment42 = [orientationlist42, frequencylist42, forcelist42, cycleslist42]
+experiment43 = [orientationlist43, frequencylist43, forcelist43, cycleslist43]
+experiment44 = [orientationlist44, frequencylist44, forcelist44, cycleslist44]
+experiment45 = [orientationlist45, frequencylist45, forcelist45, cycleslist45]
+experiment46 = [orientationlist46, frequencylist46, forcelist46, cycleslist46]
+experiment47 = [orientationlist47, frequencylist47, forcelist47, cycleslist47]
+experiment48 = [orientationlist48, frequencylist48, forcelist48, cycleslist48]
+experiment49 = [orientationlist49, frequencylist49, forcelist49, cycleslist49]
+experiment50 = [orientationlist50, frequencylist50, forcelist50, cycleslist50]
+
+experimentlist = [experiment1, experiment2, experiment3, experiment4, experiment5, experiment6, experiment7, experiment8, experiment9, experiment10, experiment11, experiment12, experiment13, experiment14, experiment15, experiment16, experiment17, experiment18, experiment19, experiment20, experiment21, experiment22, experiment23, experiment24, experiment25, experiment26, experiment27, experiment28, experiment29, experiment30, experiment31, experiment32, experiment33, experiment34, experiment35, experiment36, experiment37, experiment38, experiment39, experiment40, experiment41, experiment42, experiment43, experiment44, experiment45, experiment46, experiment47, experiment48, experiment49, experiment50]
+
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+
+def di_calculator(tnormstart, di, D, phasenumber, experimentnumber):
+  
+    orientation = (((experimentlist[experimentnumber-1])[0])[phasenumber - 1])
+    if orientation == 0:
+        a_emax = a_emax0
+        b_emax = b_emax0
+   
+        a_a_edyn = a_a_edyn0
+        b_a_edyn = b_a_edyn0
+        c_a_edyn = c_a_edyn0
+        a_b_edyn = a_b_edyn0
+        b_b_edyn = b_b_edyn0
+        c_b_edyn = c_b_edyn0
+        a_c_edyn = a_c_edyn0
+        b_c_edyn = b_c_edyn0
+        c_c_edyn = c_c_edyn0
+        a_d_edyn = a_d_edyn0
+        b_d_edyn = b_d_edyn0
+        c_d_edyn = c_d_edyn0
+   
+        E = E0
+        cor_emin = cor_emin0
+   
+        a_b_emin = a_b_emin0
+        b_b_emin = b_b_emin0
+        c_b_emin = c_b_emin0
+   
+    elif orientation == 90:
+        
+        a_emax = a_emax90
+        b_emax = b_emax90
+   
+        a_a_edyn = a_a_edyn90
+        b_a_edyn = b_a_edyn90
+        c_a_edyn = c_a_edyn90
+        a_b_edyn = a_b_edyn90
+        b_b_edyn = b_b_edyn90
+        c_b_edyn = c_b_edyn90
+        a_c_edyn = a_c_edyn90
+        b_c_edyn = b_c_edyn90
+        c_c_edyn = c_c_edyn90
+        a_d_edyn = a_d_edyn90
+        b_d_edyn = b_d_edyn90
+        c_d_edyn = c_d_edyn90
+   
+        E = E90
+        cor_emin = cor_emin90
+   
+        a_b_emin = a_b_emin90
+        b_b_emin = b_b_emin90
+        c_b_emin = c_b_emin90
+
+    frequency = (((experimentlist[experimentnumber-1])[1])[phasenumber - 1])
+    if frequency == 2:
+        if orientation == 0:
+            a_tmax = a_tmax_2Hz0
+            b_tmax = b_tmax_2Hz0
+            c_tmax = c_tmax_2Hz0
+        else:
+            a_tmax = a_tmax_2Hz90
+            b_tmax = b_tmax_2Hz90
+            c_tmax = c_tmax_2Hz90  
+    elif frequency == 5:
+        if orientation == 0:
+            a_tmax = a_tmax_5Hz0
+            b_tmax = b_tmax_5Hz0
+            c_tmax = c_tmax_5Hz0
+        else:
+            a_tmax = a_tmax_5Hz90
+            b_tmax = b_tmax_5Hz90
+            c_tmax = c_tmax_5Hz90
+    elif frequency == 15:
+        if orientation == 0:
+            a_tmax = a_tmax_15Hz0
+            b_tmax = b_tmax_15Hz0
+            c_tmax = c_tmax_15Hz0
+        else:
+            a_tmax = a_tmax_15Hz90
+            b_tmax = b_tmax_15Hz90
+            c_tmax = c_tmax_15Hz90
+
+    force = (((experimentlist[experimentnumber-1])[2])[phasenumber - 1])
+    
+    cycles = (((experimentlist[experimentnumber-1])[3])[phasenumber - 1])
+    
+ #calculations
+ #emax
+ 
+    emax = a_emax * force + b_emax
+ 
+ #TBmax and conversions
+ 
+    time = cycles/frequency
+ 
+    tmax = pow(10, pow((force - c_tmax)/a_tmax, (1/b_tmax)))
+ 
+    tnorm = time/tmax #actual time [s] divided by the calculated tmax
+    
+    caf = tmax * frequency #cycles at failure = caf
+    
+    tfc = 5/caf #5 is the number of cycles shaved off at beginning
+    
+    tnormend = tnorm + tnormstart #the first tnormstart is declared before the program is opened (hopefully), it is then updated towards the end
+ 
+ #edyn
+ 
+    a_edyn = a_a_edyn * pow(force, b_a_edyn) + c_a_edyn
+    b_edyn = a_b_edyn * pow(force, b_b_edyn) + c_b_edyn
+    c_edyn = a_c_edyn * pow(force, b_c_edyn) + c_c_edyn
+    d_edyn = a_d_edyn * pow(force, b_d_edyn) + c_d_edyn
+
+    edynstart = a_edyn * pow(tnormstart, b_edyn) + c_edyn * pow(tnormstart, d_edyn)
+    edynend = a_edyn * pow(tnormend, b_edyn) + c_edyn * pow(tnormend, d_edyn)
+    
+    edynfp = a_edyn * pow(tfc, b_edyn) + c_edyn * pow(tfc, d_edyn)
+ 
+ #emin
+ 
+    a_emin = stressmin/E + cor_emin
+    b_emin = a_b_emin * pow(force, b_b_emin) + c_b_emin
+
+    eminstart = stressmin * (a_emin + tnormstart/b_emin)
+    eminend = stressmin * (a_emin + tnormend/b_emin)
+
+
+#calculating di
+
+    if phasenumber == 1:
+        di = ((edynend - edynfp) + (eminend - stressmin*a_emin))/(emax - edynfp - stressmin*a_emin)        
+        
+    else:
+        di = ((edynend - edynstart) + (eminend - eminstart))/(emax - edynfp - stressmin*a_emin)
+    
+#preparing the next tnormstart based on the di so far 
+    
+    D = D + di
+    
+    x = symbols('x')
+
+    expr = ((a_edyn*pow(x, b_edyn)+c_edyn*pow(x, d_edyn)+stressmin*(a_emin + x/b_emin))/(emax-edynfp-stressmin*a_emin))-D
+  
+    tnormstartlist = solve(expr, x)
+
+    tnormstart = float(tnormstartlist[0])
+       
+    print(tnormstart)
+    
+    print(di)
+ 
+    print("D =", D)
+    
+    phasenumber += 1
+    
+    if phasenumber <= 4: 
+        di_calculator(tnormstart, di, D, phasenumber, experimentnumber)
+    else:
+        tnormstart = 0
+        di = 0
+        D = 0
+        phasenumber = 1
+        experimentnumber += 1
+        di_calculator(tnormstart, di, D, phasenumber, experimentnumber)
+    
+    print("All phases analyzed.")
+        
+        
+di_calculator(0, 0, 0, 1, 1)
