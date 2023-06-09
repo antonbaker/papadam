@@ -128,8 +128,8 @@ def test_wind_dataframe(capsys, wind_csv_dataframe, rpm_csv_dataframe):
     )
     with capsys.disabled():
         print()
-        print(f"Before: {tuple(wind_csv_dataframe.columns)}")
-        print(f"After: {tuple(wind_csv_df2.columns)}")
+        print(f"Before: {wind_csv_dataframe.columns}")
+        print(f"After: {wind_csv_df2.columns}")
 
 def test_rpm_dataframe(capsys, wind_csv_dataframe, rpm_csv_dataframe):
     """@@@"""
@@ -138,5 +138,16 @@ def test_rpm_dataframe(capsys, wind_csv_dataframe, rpm_csv_dataframe):
     )
     with capsys.disabled():
         print()
-        print(f"Before: {tuple(rpm_csv_dataframe.columns)}")
-        print(f"After: {tuple(rpm_csv_df2.columns)}")
+        print(f"Before: {rpm_csv_dataframe.columns}")
+        print(f"After: {rpm_csv_df2.columns}")
+
+def test_rpm_dataframe_p(capsys, wind_csv_dataframe, rpm_csv_dataframe):
+    """@@@"""
+    wind_csv_df2, rpm_csv_df2 = allcalculations(
+        wind_csv_dataframe, rpm_csv_dataframe
+    )
+    volumes = rpm_csv_df2['P']
+    with capsys.disabled():
+        for volume in volumes:
+            print(volume)
+
