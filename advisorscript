@@ -1,20 +1,15 @@
-
-#advisor's script
 import os
 
-
-directory  =r"D:\1461_Abschlussbericht_LL\Auswertung\03_Werkstoffwöhler\PA6-GF15_Wöhlerlinien\00_Degree_FibreOriention\5 Hz" 
+directory  = r"D:\1461_Abschlussbericht_LL\Auswertung\03_Werkstoffwöhler\PA6-GF15_Wöhlerlinien\00_Degree_FibreOriention\5 Hz" 
 
 subfolders = [ f.path for f in os.scandir(directory) if f.is_dir() ]
  
-#print (subfolders)
-
 i=1
 for subfolder in subfolders:
-    print (subfolder)
+    print(subfolder)
     MainPath = subfolder
     execfile(r'C:\Users\Celik\Desktop\2020_04_23_Skript_Temperaturkontrolle\input_param.py')
-    print ("finished test" +  str(i))
+    print("finished test" +  str(i))
 print("All Done!")
 
 

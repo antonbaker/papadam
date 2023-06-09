@@ -489,6 +489,7 @@ def di_calculator(tnormstart, di, D, phasenumber, experimentnumber):
     
     D = D + di
     
+    breakpoint(context=5) 
     x = symbols('x')
 
     expr = ((a_edyn*pow(x, b_edyn)+c_edyn*pow(x, d_edyn)+stressmin*(a_emin + x/b_emin))/(emax-edynfp-stressmin*a_emin))-D
